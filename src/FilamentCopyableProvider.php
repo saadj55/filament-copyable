@@ -13,7 +13,6 @@ class FilamentCopyableProvider extends PluginServiceProvider
     {
         $package->name(self::$name)
             ->hasConfigFile()
-            ->hasTranslations()
             ->hasViews();
     }
     /**
@@ -27,14 +26,10 @@ class FilamentCopyableProvider extends PluginServiceProvider
     {
         parent::boot();
 
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'filament-copyable');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-copyable');
         $this->publishes([
             __DIR__ . '/../config' => config_path(),
         ], 'filament-copyable-config');
 
-        $this->publishes([
-            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/filament-copyable'),
-        ], 'filament-copyable-translations');
     }
 }
