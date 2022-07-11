@@ -12,12 +12,19 @@ You can install the package via composer:
 composer require saadj55/filament-copyable
 ```
 ## Usage
-
+### Column
 In in your Table Schema:
 
 ```php
 
 \Saadj55\FilamentCopyable\Tables\Columns\CopyableTextColumn::make('name')
+
+```
+### Field
+
+```php
+
+WIP
 
 ```
 ## License
