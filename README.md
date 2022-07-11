@@ -3,6 +3,7 @@
 Copyable Text Column and Field for Filament PHP.
 
 ![Screenshot of Login](./filament-copyable-column.PNG)
+![Screenshot of Login](./copyable-text-field.PNG)
 
 ## Installation
 
@@ -24,7 +25,7 @@ In in your Table Schema:
 
 ```php
 
-WIP
+\Saadj55\FilamentCopyable\Forms\Components\CopyableTextInput::make('name')
 
 ```
 ## License
