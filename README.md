@@ -1,6 +1,6 @@
 # Filament Copyable
 
-Copyable Text Columns and Fields for Filament PHP.
+Copyable Text Column and Field for Filament PHP.
 
 ![Screenshot of Login](./filament-copyable-column.PNG)
 
