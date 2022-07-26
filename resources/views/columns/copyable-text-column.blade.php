@@ -1,18 +1,24 @@
-<div
+<div x-cloak
+     x-data="{ open: false, clicked: false }"
+     @mouseover="open = true"
+     @mouseover.outside="open = false; clicked = false"
         {{ $attributes->merge($getExtraAttributes())->class([
             'px-4 py-3 filament-tables-text-column flex items-center gap-2',
             'text-primary-600 transition hover:underline hover:text-primary-500 focus:underline focus:text-primary-500' => $getAction() || $getUrl(),
             'whitespace-normal' => $canWrap(),
         ]) }}
 >
-
     {{ $getFormattedState() }}
-
     @if($getFormattedState())
-    <button @click.prevent="$clipboard( '{{$getFormattedState()}}')">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-700 dark:text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-        </svg>
-    </button>
+        <button :class="open || clicked ? 'opacity-100' : 'opacity-0'" class="transition duration-500 rounded border border-gray-400 dark:border-gray-600 "
+                @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
+            <x-heroicon-o-duplicate x-show="!clicked " class="w-5 h-5 text-gray-400 dark:text-gray-400"/>
+            <x-heroicon-o-check x-show="clicked && open" class="w-5 h-5 text-success-500"
+                                x-tooltip="{
+                                    content: '{{ __('Copied!') }}',
+                                    placement: 'right',
+                                    onHidden: () => { clicked = false ;}
+                                }"/>
+        </button>
     @endif
 </div>
