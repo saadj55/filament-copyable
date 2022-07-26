@@ -10,9 +10,11 @@
 >
     {{ $getFormattedState() }}
     @if($getFormattedState())
-        <button :class="open || clicked ? 'opacity-100' : 'opacity-0'" class="transition duration-500 rounded border border-gray-400 dark:border-gray-600 "
-                @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
-            <x-heroicon-o-duplicate x-show="!clicked " class="w-5 h-5 text-gray-400 dark:text-gray-400"/>
+        <button :class="open || clicked || ! {{ $isAnimated }}? 'opacity-100' : 'opacity-0'"
+            class="transition duration-500 rounded border border-gray-400 dark:border-gray-600 "
+            @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
+
+            <x-icon :name="$getIcon()" x-show="!clicked" class="w-5 h-5 text-gray-400 dark:text-gray-400"/>
             <x-heroicon-o-check x-show="clicked && open" class="w-5 h-5 text-success-500"
                                 x-tooltip="{
                                     content: '{{ __('Copied!') }}',
