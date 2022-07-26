@@ -33,7 +33,7 @@ class CopyableTextColumn extends TextColumn
     }
 
     /**
-     * @return bool
+     * @return string
      */
     public function isAnimated(): string
     {
