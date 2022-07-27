@@ -21,6 +21,8 @@ In in your Table Schema:
 \Saadj55\FilamentCopyable\Tables\Columns\CopyableTextColumn::make('name')
 
 ```
+You can make the icon to only appear on hover with the `->animated()` method, setting a custom [heroicon](https://heroicons.com/) can be done with e.g. `->icon("heroicon-o-duplicate")`.
+
 ### Field
 
 ```php
