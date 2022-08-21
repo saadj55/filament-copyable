@@ -7,12 +7,12 @@ use Filament\Tables\Columns\TextColumn;
 class CopyableTextColumn extends TextColumn
 {
     protected string $icon = 'heroicon-o-clipboard';
-    protected bool $animated = false;
+    protected bool $showOnHover = false;
     protected string $view = 'filament-copyable::columns.copyable-text-column';
 
-    public function animated(): static
+    public function showOnHover(): static
     {
-        $this->animated = true;
+        $this->showOnHover = true;
 
         return $this;
     }
@@ -35,11 +35,8 @@ class CopyableTextColumn extends TextColumn
     /**
      * @return string
      */
-    public function isAnimated(): string
+    public function isShowOnHover(): string
     {
-        return  $this->animated ? 'true' : 'false';
+        return  $this->showOnHover;
     }
-
-
-
 }

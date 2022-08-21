@@ -10,7 +10,7 @@
 >
     {{ $getFormattedState() }}
     @if($getFormattedState())
-        <button :class="open || clicked || ! {{ $isAnimated }}? 'opacity-100' : 'opacity-0'"
+        <button :class="open || clicked || ! {{ $isShowOnHover() }}? 'opacity-100' : 'opacity-0'"
             class=""
             @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
 
