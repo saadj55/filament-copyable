@@ -1,5 +1,5 @@
 <div x-cloak
-     x-data="{ open: false, clicked: false }"
+     x-data="{ open: false, clicked: false, isShowOnHover: '{{$isShowOnHover()}}' }"
      @mouseover="open = true"
      @mouseover.outside="open = false; clicked = false"
         {{ $attributes->merge($getExtraAttributes())->class([
@@ -10,8 +10,7 @@
 >
     {{ $getFormattedState() }}
     @if($getFormattedState())
-        <button :class="open || clicked || ! {{ $isShowOnHover() }}? 'opacity-100' : 'opacity-0'"
-            class=""
+        <button :class="open || clicked || !isShowOnHover ? 'opacity-100' : 'opacity-0'"
             @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
 
             <x-icon :name="$getIcon()" x-show="!clicked" class="w-5 h-5 "/>
