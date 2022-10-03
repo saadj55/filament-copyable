@@ -2,11 +2,12 @@
 
 namespace Saadj55\FilamentCopyable\Tables\Columns;
 
+use Closure;
 use Filament\Tables\Columns\TextColumn;
 
 class CopyableTextColumn extends TextColumn
 {
-    protected string $icon = 'heroicon-o-clipboard';
+    protected string | Closure | null $icon = 'heroicon-o-clipboard';
     protected bool $showOnHover = false;
     protected string $view = 'filament-copyable::columns.copyable-text-column';
 
@@ -15,21 +16,6 @@ class CopyableTextColumn extends TextColumn
         $this->showOnHover = true;
 
         return $this;
-    }
-
-    public function icon(string $icon): static
-    {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getIcon(): string
-    {
-        return $this->icon;
     }
 
     /**
