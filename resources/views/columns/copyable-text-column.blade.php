@@ -11,7 +11,7 @@
     {{ $getFormattedState() }}
     @if($getFormattedState())
         <button :class="open || clicked || !isShowOnHover ? 'opacity-100' : 'opacity-0'"
-            @click.prevent="$clipboard('{{$getFormattedState()}}');clicked = true;">
+            @click.prevent="$clipboard(new DOMParser().parseFromString(`{{ htmlspecialchars($getFormattedState(), ENT_QUOTES) }}`, 'text/html').documentElement.textContent);clicked = true;">
 
             <x-icon :name="$getIcon()" x-show="!clicked" class="w-5 h-5 "/>
             <x-heroicon-o-check x-show="clicked && open" class="w-5 h-5 text-success-500"
